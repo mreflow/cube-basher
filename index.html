@@ -789,7 +789,15 @@ function makePlayerMesh(ch) {
     const e1 = new THREE.Mesh(new THREE.SphereGeometry(0.085, 8, 8), eyeMat); e1.position.set(sx, 0.02, 0.275); head.add(e1);
     const p1 = new THREE.Mesh(new THREE.SphereGeometry(0.042, 6, 6), pupMat); p1.position.set(sx, 0.02, 0.345); head.add(p1);
   }
+new THREE.TextureLoader().load('assets/faces/normal-justin.png', tex => {
 
+    const faceSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
+    faceSprite.scale.set(0.55, 0.55, 1);
+    faceSprite.position.set(0, 0.02, 0.35);
+    faceSprite.name = 'normalJustinFaceSprite';
+    head.add(faceSprite);
+  }, undefined, () => {});
+  
   // arms — pivot at shoulder
   const armGeo = new THREE.CapsuleGeometry(0.105, 0.34, 4, 7);
   const handGeo = new THREE.SphereGeometry(0.13, 8, 8);
